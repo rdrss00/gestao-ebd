@@ -1,0 +1,45 @@
+CREATE TABLE IF NOT EXISTS class (
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
+   name TEXT NOT NULL,
+   description TEXT,
+   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS student (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     class_id INTEGER,
+     name TEXT NOT NULL,
+     phone TEXT,
+     age INTEGER,
+     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (class_id) REFERENCES class(id)
+);
+
+CREATE TABLE IF NOT EXISTS enrollment (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER,
+    class_id INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES student(id),
+    FOREIGN KEY (class_id) REFERENCES class(id)
+);
+
+CREATE TABLE IF NOT EXISTS attendance (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    class_id INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (class_id) REFERENCES class(id)
+);
+
+CREATE TABLE IF NOT EXISTS attendance_student (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    attendance_id INTEGER,
+    student_id INTEGER,
+    status TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (attendance_id) REFERENCES attendance(id),
+    FOREIGN KEY (student_id) REFERENCES student(id)
+);
