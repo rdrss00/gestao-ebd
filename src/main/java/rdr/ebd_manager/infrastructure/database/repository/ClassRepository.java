@@ -6,4 +6,5 @@ import rdr.ebd_manager.infrastructure.database.entity.ClassEntity;
 
 @Repository
 public interface ClassRepository extends JpaRepository<ClassEntity, Long> {
+    boolean existsByNameIgnoreCase(String name);
 }

@@ -1,6 +1,7 @@
 package rdr.ebd_manager.usecase.classe;
 
 import org.springframework.stereotype.Service;
+import rdr.ebd_manager.config.exception.ClassAlreadyExistsException;
 import rdr.ebd_manager.infrastructure.database.repository.ClassRepository;
 import rdr.ebd_manager.usecase.classe.dto.ClassInputDto;
 import rdr.ebd_manager.usecase.classe.dto.ClassOutputDto;
@@ -21,10 +22,19 @@ public class ClassUsecaseImpl implements ClassUsecase {
 
     @Override
     public ClassOutputDto createClass(ClassInputDto classDto) {
+        validateClass(classDto);
         var classEntity = classMapper.toEntity(classDto);
         classEntity.setCreatedAt(LocalDateTime.now());
         classEntity.setUpdatedAt(LocalDateTime.now());
         var classSaved = classRepository.save(classEntity);
         return classMapper.toDto(classSaved);
+    }
+
+
+    private void validateClass(ClassInputDto classDto) {
+        var exists = classRepository.existsByNameIgnoreCase(classDto.getName());
+        if (exists) {
+            throw new ClassAlreadyExistsException("Class with name " + classDto.getName() + " already exists.");
+        }
     }
 }
