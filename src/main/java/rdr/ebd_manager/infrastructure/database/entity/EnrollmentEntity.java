@@ -1,4 +1,4 @@
-package rdr.ebd_manager.entity;
+package rdr.ebd_manager.infrastructure.database.entity;
 
 import jakarta.persistence.*;
 

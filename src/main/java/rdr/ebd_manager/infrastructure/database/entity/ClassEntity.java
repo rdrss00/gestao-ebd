@@ -1,4 +1,4 @@
-package rdr.ebd_manager.entity;
+package rdr.ebd_manager.infrastructure.database.entity;
 
 import jakarta.persistence.*;
 
@@ -11,15 +11,17 @@ public class ClassEntity {
     private Integer id;
     private String name;
     private String description;
-    private LocalDateTime created_at;
-    private LocalDateTime  updated_at;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    public ClassEntity(Integer id, String name, String description, LocalDateTime created_at, LocalDateTime updated_at) {
+    public ClassEntity() {}
+
+    public ClassEntity(Integer id, String name, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
@@ -46,19 +48,19 @@ public class ClassEntity {
         this.description = description;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdated_at() {
-        return updated_at;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated_at(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
