@@ -4,14 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import rdr.ebd_manager.config.exception.ClassAlreadyExistsException;
+import rdr.ebd_manager.config.exception.EbdClassAlreadyExistsException;
+import rdr.ebd_manager.config.exception.EbdClassNotFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 1. Handle targeted custom business exceptions
-    @ExceptionHandler(ClassAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponse> handleResourceAlreadyExist(ClassAlreadyExistsException ex) {
+    @ExceptionHandler(EbdClassAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleResourceAlreadyExist(EbdClassAlreadyExistsException ex) {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.CONFLICT.value(),
                 "CONFLICT",
@@ -20,7 +20,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 
-    // 2. Handle generic system exceptions (Fallback)
+    @ExceptionHandler(EbdClassNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(EbdClassNotFoundException ex) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "NOT_FOUND",
+                ex.getMessage()
+        );
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex) {
         ErrorResponse error = new ErrorResponse(

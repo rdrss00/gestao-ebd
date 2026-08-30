@@ -10,17 +10,17 @@ public class StudentEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private ClassEntity classEntity;
+    @JoinColumn(name = "ebd_class_id")
+    private EbdClassEntity ebdClassEntity;
     private String name;
     private String phone;
     private Integer age;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public StudentEntity(Integer id, ClassEntity classEntity, String name, String phone, Integer age, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public StudentEntity(Integer id, EbdClassEntity ebdClassEntity, String name, String phone, Integer age, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
-        this.classEntity = classEntity;
+        this.ebdClassEntity = ebdClassEntity;
         this.name = name;
         this.phone = phone;
         this.age = age;
@@ -36,12 +36,12 @@ public class StudentEntity {
         this.id = id;
     }
 
-    public ClassEntity getClassEntity() {
-        return classEntity;
+    public EbdClassEntity getClassEntity() {
+        return ebdClassEntity;
     }
 
-    public void setClassEntity(ClassEntity classEntity) {
-        this.classEntity = classEntity;
+    public void setClassEntity(EbdClassEntity ebdClassEntity) {
+        this.ebdClassEntity = ebdClassEntity;
     }
 
     public String getName() {

@@ -2,12 +2,12 @@ package rdr.ebd_manager.application.controller.classe;
 
 import java.time.LocalDateTime;
 
-public class ClassResponse {
+public class EbdClassResponse {
     private String name;
     private String description;
     private LocalDateTime createdAt;
 
-    public ClassResponse(String name, String description, LocalDateTime createdAt) {
+    public EbdClassResponse(String name, String description, LocalDateTime createdAt) {
         this.name = name;
         this.description = description;
         this.createdAt = createdAt;

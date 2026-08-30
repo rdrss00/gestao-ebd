@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS class (
+CREATE TABLE IF NOT EXISTS ebd_class (
    id INTEGER PRIMARY KEY AUTOINCREMENT,
    name TEXT NOT NULL,
    description TEXT,
@@ -8,30 +8,30 @@ CREATE TABLE IF NOT EXISTS class (
 
 CREATE TABLE IF NOT EXISTS student (
      id INTEGER PRIMARY KEY AUTOINCREMENT,
-     class_id INTEGER,
+     ebd_class_id INTEGER,
      name TEXT NOT NULL,
      phone TEXT,
      age INTEGER,
      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-     FOREIGN KEY (class_id) REFERENCES class(id)
+     FOREIGN KEY (ebd_class_id) REFERENCES ebd_class(id)
 );
 
 CREATE TABLE IF NOT EXISTS enrollment (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     student_id INTEGER,
-    class_id INTEGER,
+    ebd_class_id INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (student_id) REFERENCES student(id),
-    FOREIGN KEY (class_id) REFERENCES class(id)
+    FOREIGN KEY (ebd_class_id) REFERENCES ebd_class(id)
 );
 
 CREATE TABLE IF NOT EXISTS attendance (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    class_id INTEGER,
+    ebd_class_id INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (class_id) REFERENCES class(id)
+    FOREIGN KEY (ebd_class_id) REFERENCES ebd_class(id)
 );
 
 CREATE TABLE IF NOT EXISTS attendance_student (

@@ -14,14 +14,14 @@ public class EnrollmentEntity {
     @JoinColumn(name = "student_id")
     private StudentEntity studentEntity;
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private ClassEntity classEntity;
+    @JoinColumn(name = "ebd_class_id")
+    private EbdClassEntity ebdClassEntity;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public EnrollmentEntity(StudentEntity studentEntity, ClassEntity classEntity, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public EnrollmentEntity(StudentEntity studentEntity, EbdClassEntity ebdClassEntity, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.studentEntity = studentEntity;
-        this.classEntity = classEntity;
+        this.ebdClassEntity = ebdClassEntity;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -42,12 +42,12 @@ public class EnrollmentEntity {
         this.studentEntity = studentEntity;
     }
 
-    public ClassEntity getClassEntity() {
-        return classEntity;
+    public EbdClassEntity getClassEntity() {
+        return ebdClassEntity;
     }
 
-    public void setClassEntity(ClassEntity classEntity) {
-        this.classEntity = classEntity;
+    public void setClassEntity(EbdClassEntity ebdClassEntity) {
+        this.ebdClassEntity = ebdClassEntity;
     }
 
     public LocalDateTime getCreatedAt() {

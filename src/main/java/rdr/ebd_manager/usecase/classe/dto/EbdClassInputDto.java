@@ -1,12 +1,10 @@
-package rdr.ebd_manager.application.controller.classe;
+package rdr.ebd_manager.usecase.classe.dto;
 
-import java.time.LocalDateTime;
-
-public class ClassRequest {
+public class EbdClassInputDto {
     private String name;
     private String description;
 
-    public ClassRequest(String name, String description) {
+    public EbdClassInputDto(String name, String description) {
         this.name = name;
         this.description = description;
     }

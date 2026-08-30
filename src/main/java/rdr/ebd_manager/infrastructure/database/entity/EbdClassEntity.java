@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "class")
-public class ClassEntity {
+@Table(name = "ebd_class")
+public class EbdClassEntity {
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String name;
@@ -14,9 +14,9 @@ public class ClassEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public ClassEntity() {}
+    public EbdClassEntity() {}
 
-    public ClassEntity(Integer id, String name, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public EbdClassEntity(Integer id, String name, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;

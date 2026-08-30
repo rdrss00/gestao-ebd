@@ -2,13 +2,13 @@ package rdr.ebd_manager.usecase.classe.dto;
 
 import java.time.LocalDateTime;
 
-public class ClassOutputDto {
+public class EbdClassOutputDto {
     private String name;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public ClassOutputDto(String name, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public EbdClassOutputDto(String name, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.name = name;
         this.description = description;
         this.createdAt = createdAt;

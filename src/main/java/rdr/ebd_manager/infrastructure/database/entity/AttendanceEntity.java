@@ -12,12 +12,12 @@ public class AttendanceEntity {
     @Id @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private ClassEntity classEntity;
+    @JoinColumn(name = "ebd_class_id")
+    private EbdClassEntity ebdClassEntity;
     private LocalDateTime createdAt;
 
-    public AttendanceEntity(ClassEntity classEntity) {
-        this.classEntity = classEntity;
+    public AttendanceEntity(EbdClassEntity ebdClassEntity) {
+        this.ebdClassEntity = ebdClassEntity;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -29,12 +29,12 @@ public class AttendanceEntity {
         this.id = id;
     }
 
-    public ClassEntity getClassEntity() {
-        return classEntity;
+    public EbdClassEntity getClassEntity() {
+        return ebdClassEntity;
     }
 
-    public void setClassEntity(ClassEntity classEntity) {
-        this.classEntity = classEntity;
+    public void setClassEntity(EbdClassEntity ebdClassEntity) {
+        this.ebdClassEntity = ebdClassEntity;
     }
 
     public LocalDateTime getCreatedAt() {
